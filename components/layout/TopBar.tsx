@@ -1,11 +1,18 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import MessageIcon from "@mui/icons-material/Message";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchIcon from "@mui/icons-material/Search";
-
+import { useDispatch } from "react-redux";
+import { setDraw, setIndraw } from "@/app/store/slice";
+import Badge from "@mui/material/Badge";
 const TopBar = () => {
+  const dispatch = useDispatch();
+  const handleDraw = () => {
+    dispatch(setDraw());
+  };
   return (
     <div className=" w-screen top-0 sticky px-10 py-1 flex flex-row bg-white justify-between items-center">
       <Link href="/">
@@ -27,10 +34,19 @@ const TopBar = () => {
       </div>
       <div className="flex flex-row gap-4 p-4">
         <div className="p-3 rounded-full bg-blue-200 flex items-center">
-          <MessageIcon sx={{ color: "#124076", fontSize: "28px" }} />
+          <Link href="/chat">
+            <Badge badgeContent={4} color="warning">
+              <MessageIcon sx={{ color: "#124076", fontSize: "28px" }} />
+            </Badge>
+          </Link>
         </div>
         <div className="p-3 rounded-full bg-blue-200 flex items-center">
-          <NotificationsIcon sx={{ color: "#124076", fontSize: "28px" }} />
+          <Badge badgeContent={4} color="warning">
+            <NotificationsIcon
+              onClick={handleDraw}
+              sx={{ color: "#124076", fontSize: "28px" }}
+            />
+          </Badge>
         </div>
         <div className="p-3flex items-center">
           <Image

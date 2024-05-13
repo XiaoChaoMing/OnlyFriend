@@ -48,3 +48,42 @@
 .tab {
   @apply px-4 py-2 rounded-lg text-light-1 text-small-bold;
 }
+/* custom swiper */
+.swiper-pagination-bullet {
+  background-color: azure;
+  opacity: 0.5;
+}
+.swiper-pagination-bullet-active {
+  background-color: #378ce7;
+  opacity: 1;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+.swiper-button-prev:hover {
+  background-color: #f2efe594;
+
+  transform: translateX(-8px) scale(1);
+  transition: ease-in-out 300ms;
+}
+.swiper-button-next:hover {
+  background-color: #f2efe594;
+
+  transform: translateX(8px) scale(1);
+  transition: ease-in-out 300ms;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
+  padding: 5px;
+  color: red;
+}
+/* input css */
+
+input[type="file"] {
+  display: none;
+}

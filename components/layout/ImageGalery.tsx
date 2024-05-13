@@ -6,27 +6,66 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css";
+import Image from "next/image";
+import "swiper/css/pagination";
+import { isImageOrVideoPath } from "@/app/utils";
+// import required modules
+interface ImageGaleryProps {
+  imageList?: string[];
+}
 
-export default function ImageGalery() {
+const ImageGalery: React.FC<ImageGaleryProps> = ({ imageList }) => {
+  const galeryItem = (path: string) => {
+    if (isImageOrVideoPath(path) === "image") {
+      return (
+        <SwiperSlide key={path} style={{ height: "700px", width: "500px" }}>
+          <Image
+            src={path}
+            layout="fill"
+            objectFit="contain"
+            alt="Picture of the author"
+          />
+        </SwiperSlide>
+      );
+    } else if (isImageOrVideoPath(path) === "video") {
+      return (
+        <SwiperSlide
+          className="bg-black py-3"
+          key={path}
+          style={{ height: "700px", width: "500px" }}
+        >
+          <video
+            controls
+            className="h-full w-full object-contain"
+            playsInline
+            muted
+            loop
+            autoPlay
+            preload="none"
+          >
+            <source src={path} />
+          </video>
+        </SwiperSlide>
+      );
+    }
+  };
   return (
     <>
       <Swiper
         navigation
-        pagination={{ type: "fraction" }}
+        pagination={{ type: "bullets" }}
         modules={[Navigation, Pagination]}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={(swiper) => {}}
         className="min-h-96 rounded-lg"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {imageList?.map((path) => {
+          return galeryItem(path);
+        })}
       </Swiper>
     </>
   );
-}
+};
+
+ImageGalery.propTypes = {};
+
+export default ImageGalery;
