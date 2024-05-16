@@ -43,7 +43,7 @@ const PersonalImg = () => {
     },
   ];
   return (
-    <div className="bg-white p-3 rounded-md">
+    <div className="bg-white p-3 rounded-md sticky top-0">
       <p className="text-[24px] font-bold pb-3">Image Storage</p>
       <ImageList sx={{ width: 500, height: 500 }} cols={3} rowHeight={164}>
         {itemData.map((item) => (

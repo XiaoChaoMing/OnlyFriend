@@ -8,7 +8,26 @@ import Button from "../../../../components/layout/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/store/store";
 import { setFollow, setUnfollow } from "@/app/store/slice";
-const Header = () => {
+
+interface HeaderProps {
+  maintImage: string;
+  wallPaper: string;
+  name: string;
+  follower: number;
+  liked: number;
+  description: {
+    info: string;
+    email: string;
+  };
+}
+const Header: React.FC<HeaderProps> = ({
+  maintImage,
+  wallPaper,
+  name,
+  follower,
+  liked,
+  description,
+}) => {
   const follow = useSelector((state: RootState) => state.follow.value);
   const dispatch = useDispatch();
   const handleFollow = () => {
@@ -18,7 +37,7 @@ const Header = () => {
     <div className="h-[700px] w-full bg-white relative rounded-md">
       <div className="h-[500px] w-full overflow-hidden rounded-md">
         <Image
-          src={"https://tiki.vn/blog/wp-content/uploads/2023/08/thumb-22.jpg"}
+          src={wallPaper}
           layout="responsive"
           width={1100}
           height={400}
@@ -31,7 +50,7 @@ const Header = () => {
         width={200}
         height={200}
       />
-      <CardInfo />
+      <CardInfo name={name} follower={follower} liked={liked} />
       <div className=" absolute right-12 bottom-14">
         {follow ? (
           <Button handleFunc={handleFollow} text="Following" />
@@ -47,6 +66,16 @@ const Header = () => {
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  maintImage: PropTypes.string.isRequired,
+  wallPaper: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  follower: PropTypes.number.isRequired,
+  liked: PropTypes.number.isRequired,
+  description: PropTypes.shape({
+    info: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Header;

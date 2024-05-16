@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import Header from "../component/Header";
 import Post from "../../../../components/layout/Post";
 import CardPersonal from "../../../../components/layout/CardPersonal";
 import PersonalImg from "../../../../components/layout/PersonalImg";
-const page = () => {
+import Topmaint from "../../../../components/layout/Topmaint";
+const Page = () => {
   const posts = [
     {
       id: 1,
@@ -27,26 +28,41 @@ const page = () => {
       ],
     },
   ];
+  const header = {
+    maintImage: "/avatar.jpg",
+    wallPaper: "https://tiki.vn/blog/wp-content/uploads/2023/08/thumb-22.jpg",
+    name: "Group name",
+    follower: 100000,
+    liked: 190000,
+    description: {
+      info: "loton1.com",
+      email: "minhnguyen@gmail.com",
+    },
+  };
   return (
-    <div className="flex flex-col gap-3 h-[86vh] min-w-[1200px] px-3 mx-2 overflow-x-hidden overflow-scroll relative">
+    <div className="flex flex-col gap-3 h-[86vh] min-w-[1200px] px-3 mx-2 overflow-x-hidden">
       <div className="h-fit ">
-        <Header />
+        <Header {...header} />
       </div>
-      <div className="flex flex-row gap-3">
-        <div className="min-w-[500px] flex flex-col gap-3">
-          <CardPersonal />
+      <div className="flex flex-row gap-3 ">
+        <div className="min-w-[500px] flex flex-col gap-3 relative">
+          <CardPersonal
+            info={header.description.info}
+            email={header.description.email}
+          />
           <PersonalImg />
         </div>
         <div className="flex flex-col gap-3">
-          {posts.map((post) => {
-            return <Post key={post.id} value={post} />;
-          })}
+          <Topmaint />
+          {posts.map((post) => (
+            <Post key={post.id} value={post} />
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-page.propTypes = {};
+Page.propTypes = {};
 
-export default page;
+export default Page;

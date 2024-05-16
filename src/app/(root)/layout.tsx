@@ -9,6 +9,7 @@ import PostDetails from "./component/PostDetails";
 import { StoreProvider } from "../store/StoreProvider";
 import Drawer from "./component/Drawer";
 import BoxChat from "./component/BoxChat";
+import Provider from "../../../components/Provider";
 
 export const metadata: Metadata = {
   title: "Only Friends",
@@ -26,17 +27,19 @@ export default function RootLayout({
         <body
           className={`${inter.className} bg-slate-100 w-screen overflow-hidden relative`}
         >
-          <PostDetails />
-          <Drawer />
-          <TopBar />
-          <div className=" flex flex-row gap-3 absolute bottom-[125px] right-32 z-[80]">
-            <BoxChat />
-          </div>
-          <main className="flex flex-row mt-8">
-            <LeftSideBar />
-            <div>{children}</div>
-            <RightSideBar />
-          </main>
+          <Provider>
+            <PostDetails />
+            <Drawer />
+            <TopBar />
+            <div className=" flex flex-row gap-3 absolute bottom-[125px] right-32 z-[80]">
+              <BoxChat />
+            </div>
+            <main className="flex flex-row mt-8">
+              <LeftSideBar />
+              <div>{children}</div>
+              <RightSideBar />
+            </main>
+          </Provider>
         </body>
       </html>
     </StoreProvider>

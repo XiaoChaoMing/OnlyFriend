@@ -8,6 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch } from "react-redux";
 import { setDraw, setIndraw } from "@/app/store/slice";
 import Badge from "@mui/material/Badge";
+import SignInBtn from "./SignInBtn";
 const TopBar = () => {
   const dispatch = useDispatch();
   const handleDraw = () => {
@@ -57,6 +58,7 @@ const TopBar = () => {
             className=" rounded-full"
           />
         </div>
+        <SignInBtn />
       </div>
     </div>
   );
