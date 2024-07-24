@@ -11,7 +11,7 @@ const BtnItem: React.FC<BtnProp> = ({
 }) => {
   return (
     <button
-      type="submit"
+      type="button"
       className={twMerge(
         `flex flex-row gap-4 justify-between hover:bg-slate-200 p-3 rounded-lg`,
         className

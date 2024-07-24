@@ -22,7 +22,7 @@ const CardInfo: React.FC<CardInforProp> = ({
       >
         <p className="text-[24px] font-bold">{name}</p>
         <p className="text-[17px] font-medium">
-          {follower / 1000 + "K"} Người theo dõi•{liked / 1000 + "K"} Lượt thích
+          {follower} Follower•{liked} Liked
         </p>
         <AvatarGroup max={4} className="flex flex-row-reverse justify-end">
           <Avatar alt="Remy Sharp" src="/avatar.jpg" />
@@ -34,13 +34,6 @@ const CardInfo: React.FC<CardInforProp> = ({
       </div>
     </div>
   );
-};
-
-CardInfo.propTypes = {
-  className: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  follower: PropTypes.number.isRequired,
-  liked: PropTypes.number.isRequired,
 };
 
 export default CardInfo;

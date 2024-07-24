@@ -9,9 +9,10 @@ import "swiper/css";
 import Image from "next/image";
 import "swiper/css/pagination";
 import { isImageOrVideoPath } from "@/app/utils";
+import { PostMedia } from "../../type";
 // import required modules
 interface ImageGaleryProps {
-  imageList?: string[];
+  imageList?: PostMedia[];
 }
 
 const ImageGalery: React.FC<ImageGaleryProps> = ({ imageList }) => {
@@ -21,7 +22,7 @@ const ImageGalery: React.FC<ImageGaleryProps> = ({ imageList }) => {
         <SwiperSlide key={path} style={{ height: "700px", width: "500px" }}>
           <Image
             src={path}
-            layout="fill"
+            fill
             objectFit="contain"
             alt="Picture of the author"
           />
@@ -59,7 +60,7 @@ const ImageGalery: React.FC<ImageGaleryProps> = ({ imageList }) => {
         className="min-h-96 rounded-lg"
       >
         {imageList?.map((path) => {
-          return galeryItem(path);
+          return galeryItem(path.mediaFile);
         })}
       </Swiper>
     </>

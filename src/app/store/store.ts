@@ -1,22 +1,32 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
+  appReducer,
   counterReducer,
-  activeReducer,
-  drawReducer,
-  followReducer,
   postReducer,
-  crPostReducer,
   BoxChatReducer,
+  PostListReducer,
+  LoadPostTriggerReducer,
+  FriendListReducer,
+  socketReducer,
+  callReducer,
+  MsgReducer,
+  ListFriendReducer,
+  ListNotifyReducer,
 } from "./slice";
 export const store = configureStore({
   reducer: {
+    appAction: appReducer,
     counter: counterReducer,
-    active: activeReducer,
-    showDrawer: drawReducer,
-    follow: followReducer,
     post: postReducer,
-    crPost: crPostReducer,
     boxChat: BoxChatReducer,
+    postList: PostListReducer,
+    loadMore: LoadPostTriggerReducer,
+    friend: FriendListReducer,
+    socket: socketReducer,
+    videoCall: callReducer,
+    msg: MsgReducer,
+    listFriend: ListFriendReducer,
+    listNotify: ListNotifyReducer,
   },
 });
 

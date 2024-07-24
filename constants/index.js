@@ -21,7 +21,6 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import AppShortcutIcon from "@mui/icons-material/AppShortcut";
-import MinimizeIcon from "@mui/icons-material/Minimize";
 import ClearIcon from "@mui/icons-material/Clear";
 import RemoveIcon from "@mui/icons-material/Remove";
 
@@ -46,7 +45,7 @@ export const sidebarLinks = [
   {
     id: 3,
     icon: <GroupOutlined sx={{ color: "#FAA300", fontSize: "26px" }} />,
-    route: "/group",
+    route: "",
     label: "Group",
   },
   {
@@ -186,13 +185,6 @@ export const createPostMenu = [
     type: "input",
   },
   {
-    id: 2,
-    icon: <OndemandVideoIcon sx={{ color: "#FAA300", fontSize: "26px" }} />,
-    route: "",
-    label: "Video",
-    type: "input",
-  },
-  {
     id: 3,
     icon: <TagFacesIcon sx={{ color: "#6420AA", fontSize: "26px" }} />,
     route: "",
@@ -205,21 +197,21 @@ export const messageMenu = [
     id: 1,
     icon: <HomeIcon sx={{ fontSize: "26px", color: "grey" }} />,
     route: "/",
-    label: "Home",
+    label: "Home1",
     type: "button",
   },
   {
     id: 2,
     icon: <OndemandVideoIcon sx={{ fontSize: "26px", color: "grey" }} />,
     route: "",
-    label: "Home",
+    label: "Home2",
     type: "button",
   },
   {
     id: 3,
     icon: <GroupsIcon sx={{ fontSize: "26px", color: "grey" }} />,
     route: "",
-    label: "Home",
+    label: "Home3",
     type: "button",
   },
 ];
@@ -227,7 +219,7 @@ export const chatMenu = [
   {
     id: 1,
     icon: <LocalPhoneIcon sx={{ fontSize: "26px", color: "#10439F" }} />,
-    route: "/",
+    route: "",
     type: "button",
   },
   {
@@ -247,7 +239,7 @@ export const chatItem = [
   {
     id: 1,
     icon: <AddCircleIcon sx={{ fontSize: "26px", color: "#10439F" }} />,
-    route: "/",
+    route: "",
     type: "button",
   },
   {
@@ -287,5 +279,67 @@ export const listMessBox = [
     icon: <ClearIcon sx={{ fontSize: "20px", color: "white" }} />,
     route: "",
     type: "button",
+  },
+];
+// export const VideoCallmenu = [
+//   {
+//     id: 1,
+//     icon: <PhoneDisabledIcon sx={{ fontSize: "20px", color: "white" }} />,
+//     route: "",
+//     type: "button",
+//   },
+//   {
+//     id: 2,
+//     icon: <KeyboardVoiceIcon sx={{ fontSize: "20px", color: "white" }} />,
+//     route: "",
+//     type: "button",
+//   },
+//   {
+//     id: 3,
+//     icon: <VideocamIcon sx={{ fontSize: "20px", color: "white" }} />,
+//     route: "",
+//     type: "button",
+//   },
+// ];
+export const listBackground = [
+  {
+    id: 1,
+    bg: "bg-red-400",
+  },
+  {
+    id: 2,
+    bg: "bg-gradient-to-r from-cyan-500 to-blue-500",
+  },
+  {
+    id: 3,
+    bg: "bg-gradient-to-r from-violet-500 to-fuchsia-500",
+  },
+  {
+    id: 4,
+    bg: "bg-gradient-to-r from-black via-gray-800 to-gray-600",
+  },
+  {
+    id: 5,
+    bg: "bg-gradient-to-r from-green-800 via-teal-600 to-teal-400 ",
+  },
+  {
+    id: 6,
+    bg: "bg-gradient-to-r from-orange-600 via-yellow-500 to-yellow-300",
+  },
+  {
+    id: 7,
+    bg: "bg-gradient-to-r from-teal-700 via-teal-500 to-blue-400 ",
+  },
+  {
+    id: 8,
+    bg: "bg-gradient-to-r from-orange-700 via-red-600 to-red-500 ",
+  },
+  {
+    id: 9,
+    bg: "bg-gradient-to-r from-red-600 via-pink-600 to-pink-400 ",
+  },
+  {
+    id: 10,
+    bg: "bg-gradient-to-r from-rose-500 via-rose-400 to-coral-300 ",
   },
 ];

@@ -8,9 +8,16 @@ import PostModal from "./PostModal";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
 import { setOpent } from "@/app/store/slice";
+import { useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+interface TopmaintProps {
+  groupId?: string;
+}
+const Topmaint: React.FC<TopmaintProps> = ({ groupId }) => {
+  const session = useSession();
+  const Avatar = session.data?.data.user.Avatar;
+  const showModal = useSelector((state: RootState) => state.appAction.crPost);
 
-const Topmaint = () => {
-  const showModal = useSelector((state: RootState) => state.crPost.value);
   const dispatch = useDispatch();
   const handleOpent = () => {
     dispatch(setOpent());
@@ -18,15 +25,16 @@ const Topmaint = () => {
   return (
     <div className=" flex flex-col gap-2 px-8 py-4 bg-white w-full h-fit rounded-xl mb-2">
       {/* create post modal */}
-      <PostModal />
-      <div className="flex flex-row gap-2 mt-2">
-        <Image
-          src={`/avatar.jpg`}
-          width={50}
-          height={50}
-          alt="Picture of the author"
-          className="rounded-full"
-        />
+      <PostModal postType={2} groupId={groupId} />
+      <div className="flex flex-row gap-2 mt-2 h-[50px]">
+        <div className=" h-[50px] w-[50px] relative overflow-hidden rounded-full">
+          <Image
+            src={Avatar ? Avatar.toString() : `/avatar.jpg`}
+            alt="Picture of the author"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
         <input
           onClick={handleOpent}
           className=" bg-slate-300 rounded-3xl px-5 w-[85%]"

@@ -35,11 +35,11 @@ const page = () => {
       <div className="flex flex-row gap-3">
         <div className="min-w-[500px] flex flex-col gap-3">
           <CardPersonal />
-          <PersonalImg />
+          {/* <PersonalImg /> */}
         </div>
         <div className="flex flex-col gap-3">
           {posts.map((post) => {
-            return <Post key={post.id} value={post} />;
+            return <Post key={post.id} value={posts} />;
           })}
         </div>
       </div>

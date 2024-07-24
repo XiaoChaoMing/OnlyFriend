@@ -2,20 +2,29 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "../../../../components/layout/Card";
 
-const CommentRepply = () => {
+interface CommentReplyProps {
+  userName?: string;
+  comment?: string;
+  Avatar?: string;
+}
+const CommentRepply: React.FC<CommentReplyProps> = ({
+  userName,
+  comment,
+  Avatar,
+}) => {
   return (
     <div>
       <div className="flex flex-row items-baseline">
-        <Card height={60} width={60} className="hover:bg-transparent" />
+        <Card
+          avartar={Avatar}
+          height={40}
+          width={40}
+          className="hover:bg-transparent"
+        />
         <div>
           <div className="flex flex-col bg-slate-300 rounded-md p-2">
-            <h1 className="font-bold text-xl">minh nguyen</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus
-              perferendis eos reprehenderit? Quo nam dicta aliquid iusto
-              officiis sit, accusantium optio odit incidunt ab aperiam ex
-              cupiditate ullam autem sed.
-            </p>
+            <h1 className="font-bold text-xl">{userName}</h1>
+            <p>{comment}</p>
           </div>
         </div>
       </div>

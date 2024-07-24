@@ -6,7 +6,7 @@ import { listItem } from "../../type";
 import { twMerge } from "tailwind-merge";
 interface MenuProp {
   listItem: listItem[];
-  handleEvent?: () => void;
+  handleEvent: (id: number | undefined | null) => void;
 }
 interface MenuProp extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 const Menu: React.FC<MenuProp> = ({ listItem, className, handleEvent }) => {
@@ -23,7 +23,7 @@ const Menu: React.FC<MenuProp> = ({ listItem, className, handleEvent }) => {
           <div
             key={link.id}
             onClick={() => {
-              handleEvent;
+              handleEvent(link.id);
             }}
           >
             <Link

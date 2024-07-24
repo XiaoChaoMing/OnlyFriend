@@ -11,6 +11,23 @@
       "static/chunks/main-app.js",
       "static/css/app/(root)/layout.css",
       "static/chunks/app/(root)/layout.js"
+    ],
+    "/(root)/[...feed]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(root)/[...feed]/page.css",
+      "static/chunks/app/(root)/[...feed]/page.js"
+    ],
+    "/(stream)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(stream)/layout.css",
+      "static/chunks/app/(stream)/layout.js"
+    ],
+    "/(stream)/streamVideo/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(stream)/streamVideo/page.js"
     ]
   }
 }

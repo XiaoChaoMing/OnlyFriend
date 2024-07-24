@@ -1,3 +1,5 @@
 {
-  "/(root)/page": "app/(root)/page.js"
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/(root)/[...feed]/page": "app/(root)/[...feed]/page.js",
+  "/(stream)/streamVideo/page": "app/(stream)/streamVideo/page.js"
 }

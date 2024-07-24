@@ -1,33 +1,15 @@
-import React, { useRef } from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import Header from "../component/Header";
 import Post from "../../../../components/layout/Post";
 import CardPersonal from "../../../../components/layout/CardPersonal";
 import PersonalImg from "../../../../components/layout/PersonalImg";
 import Topmaint from "../../../../components/layout/Topmaint";
+import { GET_method } from "@/app/utils/fetchApi";
+import { Posts } from "./../../../../type";
+import { useInView } from "react-intersection-observer";
 const Page = () => {
-  const posts = [
-    {
-      id: 1,
-      avatar: "/avatar.jpg",
-      username: "minh nguyen",
-      status: "test1",
-      image: [
-        "/434596798_271021136057197_4712311117639856009_n.jpg",
-        "/18268e4b-b2d1-41cb-9a44-25604bb7d8b7.jpg",
-      ],
-    },
-    {
-      id: 2,
-      avatar: "/avatar.jpg",
-      username: "xcm149",
-      status: "test2",
-      image: [
-        "/hinh-anh-co-gai-cute-anime.jpeg",
-        "/18268e4b-b2d1-41cb-9a44-25604bb7d8b7.jpg",
-      ],
-    },
-  ];
   const header = {
     maintImage: "/avatar.jpg",
     wallPaper: "https://tiki.vn/blog/wp-content/uploads/2023/08/thumb-22.jpg",
@@ -39,6 +21,31 @@ const Page = () => {
       email: "minhnguyen@gmail.com",
     },
   };
+  const { ref, inView } = useInView();
+  const [page, setPage] = useState(0);
+  const [post, setPost] = useState<Posts[] | null>(null);
+  const loadMorePost = async () => {
+    const next = page + 3;
+    const newPost = await GET_method(
+      `/post/getAllPosts?pagesize=3&skip=${next}`
+    );
+    if (newPost.data?.length) {
+      setPage(next);
+      setPost([...(post || []), ...newPost.data]);
+    }
+  };
+  const fetchGroupPostData = async () => {
+    const posts = await GET_method(`/post/getAllPosts?pagesize=3&skip=${page}`);
+    return setPost(posts.data);
+  };
+  useEffect(() => {
+    fetchGroupPostData();
+  }, []);
+  useEffect(() => {
+    if (inView) {
+      loadMorePost();
+    }
+  }, [inView]);
   return (
     <div className="flex flex-col gap-3 h-[86vh] min-w-[1200px] px-3 mx-2 overflow-x-hidden">
       <div className="h-fit ">
@@ -52,10 +59,10 @@ const Page = () => {
           />
           <PersonalImg />
         </div>
-        <div className="flex flex-col gap-3">
+        <div ref={ref} className="flex flex-col gap-3">
           <Topmaint />
-          {posts.map((post) => (
-            <Post key={post.id} value={post} />
+          {post?.map((item) => (
+            <Post key={item.id} value={item} />
           ))}
         </div>
       </div>

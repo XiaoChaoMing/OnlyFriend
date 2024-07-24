@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   images: {
     domains: [
       "ngoaingutomato.edu.vn",
@@ -7,6 +8,8 @@ const nextConfig = {
       "gamek.mediacdn.vn",
       "tiki.vn",
       "www.youtube.com",
+      "images.unsplash.com",
+      "firebasestorage.googleapis.com",
     ],
   },
 };

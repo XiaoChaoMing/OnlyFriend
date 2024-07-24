@@ -11,30 +11,46 @@ const MessageSend: React.FC<MSGSendProps> = ({ msgText, className }) => {
   const message = (msgText: string) => {
     if (isImageOrVideoPath(msgText) === "image") {
       return (
-        <div className="bg-blue-500 rounded-md p-2 h-[400px] w-[500px] relative">
+        <div className="relative w-[400px] h-[250px]">
           <Image
             src={msgText}
             layout="fill"
-            objectFit="contain"
-            className="rounded-md p-2"
-            alt="Picture of the author"
+            objectFit="cover"
+            alt="Received Image"
+            className="rounded-lg"
           />
         </div>
       );
     } else if (isImageOrVideoPath(msgText) === "video") {
       return (
-        <video
-          className="bg-blue-500 rounded-md p-2"
-          playsInline
-          muted
-          loop
-          width="550"
-          height="754"
-          autoPlay
-          preload="none"
-        >
-          <source src={msgText} />
-        </video>
+        <div className="relative w-[400px] h-[250px]">
+          <video
+            playsInline
+            muted
+            loop
+            autoPlay
+            preload="none"
+            className="w-full h-full rounded-lg"
+            controls
+          >
+            <source src={msgText} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      );
+    } else if (isImageOrVideoPath(msgText) === "audio") {
+      return (
+        <div className="relative w-[400px] h-[40px]">
+          <audio
+            playsInline
+            preload="none"
+            className="w-full h-full rounded-lg"
+            controls
+          >
+            <source src={msgText} type="video/mp4" />
+            Your browser does not support the video tag.
+          </audio>
+        </div>
       );
     } else {
       return (

@@ -17,7 +17,7 @@ const ReelInteract: React.FC<ReelInteracProps> = ({ showCmt }) => {
     showCmt(!show);
   };
   return (
-    <div className="flex flex-col gap-3 absolute bottom-3 right-3 ">
+    <div className="flex flex-col gap-3 absolute bottom-3 right-3 z-30 ">
       <div
         className={`flex p-3  opacity-70  rounded-full transition-all duration-150 
       ${
